@@ -1,9 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe Auction, type: :model do
+	let(:seller) { User.new(:email => "jane@doe.com", :password => "pw1234") }
 	subject {
-    described_class.new(title: "Anything", description: "Lorem ipsum", start_date: DateTime.now, end_date: DateTime.now + 1.week)
-  }
+		described_class.new(title: "Anything", description: "Lorem ipsum",
+											start_date: DateTime.now, end_date: DateTime.now + 1.week,
+											seller: seller)
+	}
+
 
 	it "is valid with valid attributes" do
     expect(subject).to be_valid
@@ -32,6 +36,7 @@ RSpec.describe Auction, type: :model do
 	describe "Associations" do
 		it { should have_one(:buyer) }
 		it { should have_one(:seller) }
+		it { should have_many(:bids) }
 	end
 end
 
