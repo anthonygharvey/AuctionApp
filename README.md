@@ -1,5 +1,7 @@
 # README
 
+Codealong from [Semaphore Blog](https://semaphoreci.com/community/tutorials/how-to-test-rails-models-with-rspec)
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
