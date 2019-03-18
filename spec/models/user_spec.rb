@@ -2,9 +2,11 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
 	subject { described_class.new(password: "some_password", email: "john@doe.com") }
-	
+
   describe "Validations" do
-    it "is valid with valid attributes" do
+		it "is valid with valid attributes" do
+			auction = Auction.create(title: "Anything", description: "Lorem ipsum", start_date: DateTime.now, end_date: DateTime.now + 1.week)
+			subject.auction_id = auction.id
       expect(subject).to be_valid
     end
 
